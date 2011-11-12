@@ -1,0 +1,15 @@
+/usr/local/include/leveldb/c.h
+/usr/local/include/leveldb/cache.h
+/usr/local/include/leveldb/comparator.h
+/usr/local/include/leveldb/db.h
+/usr/local/include/leveldb/env.h
+/usr/local/include/leveldb/iterator.h
+/usr/local/include/leveldb/options.h
+/usr/local/include/leveldb/slice.h
+/usr/local/include/leveldb/status.h
+/usr/local/include/leveldb/table.h
+/usr/local/include/leveldb/table_builder.h
+/usr/local/include/leveldb/write_batch.h
+/usr/local/lib/libleveldb.so.0.0.1
+/usr/local/lib/libleveldb.so.0
+/usr/local/lib/libleveldb.so

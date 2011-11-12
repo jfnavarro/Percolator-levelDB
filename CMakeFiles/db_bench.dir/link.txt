@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/db_bench.dir/db/db_bench.cc.o  -o db_bench -rdynamic lib/libleveldb-testharness.a lib/libleveldb.so.0.0.1 -lpthread -Wl,-rpath,/scratch/newhome/Desktop/okuoku-leveldb-cmake-e28f0b5/lib 

@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/log_test.dir/db/log_test.cc.o  -o log_test -rdynamic lib/libleveldb-testharness.a lib/libleveldb.so.0.0.1 -lpthread -Wl,-rpath,/scratch/newhome/Desktop/okuoku-leveldb-cmake-e28f0b5/lib 

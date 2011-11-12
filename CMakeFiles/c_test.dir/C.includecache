@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/scratch/newhome/Desktop/okuoku-leveldb-cmake-e28f0b5/db/c_test.c
+leveldb/c.h
+/scratch/newhome/Desktop/okuoku-leveldb-cmake-e28f0b5/db/leveldb/c.h
+stddef.h
+-
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+sys/types.h
+-
+unistd.h
+-
+
+include/leveldb/c.h
+stdarg.h
+-
+stddef.h
+-
+stdint.h
+-
+

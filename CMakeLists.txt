@@ -136,7 +136,7 @@ SET (LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 
 IF(MINGW)
   set_property(TARGET leveldb PROPERTY LINK_SEARCH_END_STATIC ON)
-  set_target_properties(leveldb PROPERTIES LINK_FLAGS "-static-libgcc")
+  set_target_properties(leveldb PROPERTIES LINK_FLAGS "-static-libgcc -lstdc++")
 ENDIF()
 
 INSTALL(FILES ${HDRS} DESTINATION ${CMAKE_INSTALL_PREFIX}/include/leveldb)

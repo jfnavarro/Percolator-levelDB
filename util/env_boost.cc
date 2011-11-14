@@ -44,7 +44,6 @@
 #endif
 #include "port/port.h"
 #include "util/logging.h"
-
 #ifdef __linux
 #include <sys/sysinfo.h>
 #include <linux/unistd.h>

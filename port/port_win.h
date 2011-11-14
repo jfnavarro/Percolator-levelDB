@@ -33,7 +33,7 @@
 
 #define snprintf _snprintf
 #define close _close
-#if defined (__MINGW__)
+#if defined (__MINGW__) || defined MINGW || defined __MINGW
   #define fread_unlocked fread
 #else
   #define fread_unlocked _fread_nolock

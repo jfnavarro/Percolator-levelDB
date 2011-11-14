@@ -17,10 +17,10 @@ class WinLogger : public Logger {
   FILE* file_;
  public:
   explicit WinLogger(FILE* f) : file_(f) { assert(file_); }
-  virtual ~WinLogger() {
+  ~WinLogger() {
     fclose(file_);
   }
-  virtual void Logv(const char* format, va_list ap);
+  void Logv(const char* format, va_list ap);
 
 };
 

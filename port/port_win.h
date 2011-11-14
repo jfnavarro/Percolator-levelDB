@@ -33,7 +33,11 @@
 
 #define snprintf _snprintf
 #define close _close
-#define fread_unlocked _fread_nolock
+#if defined (__MINGW__)
+  #define fread_unlocked fread
+#else
+  #define fread_unlocked _fread_nolock
+#endif
 
 #ifndef nullptr
 const                        // this is a const object...

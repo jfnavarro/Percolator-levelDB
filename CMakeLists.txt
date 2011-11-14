@@ -9,8 +9,16 @@ set(LIB_RELEASE 1)
 set(CMAKE_INSTALL_SO_NO_EXE "0")
 
 include(CheckIncludeFile)
-include(FindBoost) # for Windows...
-
+SET (Boost_ADDITIONAL_VERSIONS "1.36" "1.36.0" "1.41" "1.41.0" "1.39" "1.39.0" "1.42.0" "1.42" "1.43.0" 
+			       "1.43." "1.44.0" "1.44.0" "1.45.0" "1.45" "1.46.0" "1.46" "1.47.0" "1.47")
+find_package(Boost COMPONENTS filesystem system thread date_time REQUIRED)
+if(Boost_FOUND)
+  message(STATUS "Package Boost-${Boost_VERSION} found : ${Boost_INCLUDE_DIR}")
+else(Boost_FOUND)
+  message(FATAL_ERROR "The package Boost has not been found")
+endif(Boost_FOUND)  
+include_directories(${Boost_INCLUDE_DIRS})
+link_directories(${Boost_INCLUDE_DIRS})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR} include)
 
 # OS detection
@@ -113,7 +121,7 @@ endif()
 
 set(_soversion ${LIB_MAJOR}.${LIB_MINOR}.${LIB_RELEASE})
 set_target_properties(leveldb PROPERTIES SOVERSION ${LIB_MAJOR} VERSION ${_soversion})
-target_link_libraries(leveldb pthread)
+target_link_libraries(leveldb pthread ${Boost_LIBRARIES})
 SET (LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 INSTALL(FILES ${HDRS} DESTINATION ${CMAKE_INSTALL_PREFIX}/include/leveldb)
 if(MINGW OR WIN32)

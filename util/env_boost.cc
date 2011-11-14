@@ -225,11 +225,7 @@ public:
     try {
       if (file_.is_open()) {
         Sync();
-	#if defined (__MINGW__) || defined MINGW || defined __MINGW
-	  file_.CLose();
-	#else  
-	  file_.close();
-	#endif
+        file_.close();
       }
     } catch (const std::exception & e) {
       result = Status::IOError(path_.generic_string() + " close", e.what());

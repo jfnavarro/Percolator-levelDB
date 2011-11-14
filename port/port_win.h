@@ -36,7 +36,7 @@
 #if defined (__MINGW__) || defined MINGW || defined __MINGW
   #define fread_unlocked fread
   template <class T>
-  typename remove_reference<T>::type&&
+  typename boost::remove_reference<T>::type&&
   move(T&& a)
   {
     return a;

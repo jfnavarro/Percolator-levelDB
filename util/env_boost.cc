@@ -62,6 +62,15 @@
 #include <boost/interprocess/sync/file_lock.hpp>
 #include <boost/thread/condition_variable.hpp>
 
+#if defined (__MINGW__) || defined MINGW || defined __MINGW
+  template <class T>
+  typename boost::remove_reference<T>::type&&
+  move(T&& a)
+  {
+    return a;
+  } 
+#else
+
 namespace leveldb {
 namespace {
 

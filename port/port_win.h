@@ -55,13 +55,6 @@ private:
 } nullptr = {};  
 #endif
 
-#ifndef std::move
-template<class T>
-typename std::remove_reference<T>::type&& move(T&& v)
-{
-    return static_cast<typename std::remove_reference<T>::type&&>(v);
-}
-#endif
 #include <string>
 
 #include <stdint.h>

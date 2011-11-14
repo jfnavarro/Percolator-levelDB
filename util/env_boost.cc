@@ -404,7 +404,11 @@ class PosixEnv : public Env {
 
       boost::interprocess::file_lock fl(fname.c_str());
       BoostFileLock * my_lock = new BoostFileLock();
-      my_lock->fl_ = std::move(fl);
+      #if defined (__MINGW__) || defined MINGW || defined __MINGW
+	my_lock->fl_ = static_cast<boost::interprocess::file_lock&&>(fl);
+      #else
+	my_lock->fl_ = std::move(fl);
+      #endif
       my_lock->fl_.lock();
       *lock = my_lock;
     } catch (const std::exception & e) {

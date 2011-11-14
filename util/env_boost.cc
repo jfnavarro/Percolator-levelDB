@@ -393,7 +393,11 @@ class PosixEnv : public Env {
 
     try {
       if (!boost::filesystem::exists(fname)) {
+      #if defined (__MINGW__) || defined MINGW || defined __MINGW
+	std::ofstream of(fname.c_str(), std::ios_base::trunc | std::ios_base::out);	
+      #else
         std::ofstream of(fname, std::ios_base::trunc | std::ios_base::out);
+      #endif	
       }
 
       assert(boost::filesystem::exists(fname));

@@ -62,27 +62,18 @@
 #include <boost/interprocess/sync/file_lock.hpp>
 #include <boost/thread/condition_variable.hpp>
 
-// #if defined (__MINGW__) || defined MINGW || defined __MINGW
-//   template <typename T> struct RemoveReference {
-//      typedef T type;
-//   };
-//  
-//   template <typename T> struct RemoveReference<T&> {
-//      typedef T type;
-//   };
-//  
-//   template <typename T> struct RemoveReference<T&&> {
-//      typedef T type;
-//   };
-//  
-// 
-//   template <class T>
-//   typename RemoveReference<T>::type&&
-//   move(T&& a)
-//   {
-//     return a;
-//   } 
-// #endif
+#if defined (__MINGW__) || defined MINGW || defined __MINGW
+  template <class T> struct identity { typedef T type; };  
+ 
+  template <class T>  
+  inline const T& forward(const typename identity<T>::type& t) { return t; }  
+ 
+  template <class T>  
+  inline T& move(T& t) { return t; }  
+ 
+  template <class T>  
+  inline const T& move(const T& t) { return t; } 
+ #endif
 
 namespace leveldb {
 namespace {
@@ -428,7 +419,7 @@ class PosixEnv : public Env {
       BoostFileLock * my_lock = new BoostFileLock();
       #if defined (__MINGW__) || defined MINGW || defined __MINGW
 	//my_lock->fl_ = static_cast<boost::interprocess::file_lock&&>(fl);
-	my_lock->fl_ = std::move(fl);
+	my_lock->fl_ = move(fl);
       #else
 	my_lock->fl_ = std::move(fl);
       #endif

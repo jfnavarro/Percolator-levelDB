@@ -64,7 +64,7 @@
 
 #if defined (__MINGW__) || defined MINGW || defined __MINGW
   template <class T>
-  typename boost::remove_reference<T>::type&&
+  typename boost::remove_reference<T>&&
   move(T&& a)
   {
     return a;

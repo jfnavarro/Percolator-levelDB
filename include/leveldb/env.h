@@ -222,7 +222,7 @@ class Logger {
   virtual ~Logger();
 
   // Write an entry to the log file with the specified format.
-//  inline void Logv(const char* format, va_list ap) = 0;
+ void Logv(const char* format, va_list ap){};
 
  private:
   // No copying allowed

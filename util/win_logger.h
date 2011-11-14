@@ -20,7 +20,7 @@ class WinLogger : public Logger {
   virtual ~WinLogger() {
     fclose(file_);
   }
-  //virtual void Logv(const char* format, va_list ap);
+  void Logv(const char* format, va_list ap);
 
 };
 

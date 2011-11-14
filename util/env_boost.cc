@@ -63,8 +63,21 @@
 #include <boost/thread/condition_variable.hpp>
 
 #if defined (__MINGW__) || defined MINGW || defined __MINGW
+  template <typename T> struct RemoveReference {
+     typedef T type;
+  };
+ 
+  template <typename T> struct RemoveReference<T&> {
+     typedef T type;
+  };
+ 
+  template <typename T> struct RemoveReference<T&&> {
+     typedef T type;
+  };
+ 
+
   template <class T>
-  typename boost::remove_reference<T>::type&&
+  typename RemoveReference<T>::type&&
   move(T&& a)
   {
     return a;
@@ -415,7 +428,7 @@ class PosixEnv : public Env {
       BoostFileLock * my_lock = new BoostFileLock();
       #if defined (__MINGW__) || defined MINGW || defined __MINGW
 	//my_lock->fl_ = static_cast<boost::interprocess::file_lock&&>(fl);
-	my_lock->fl_ = boost::move(fl);
+	my_lock->fl_ = move(fl);
       #else
 	my_lock->fl_ = std::move(fl);
       #endif

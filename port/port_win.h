@@ -55,6 +55,14 @@ private:
 } nullptr = {};  
 #endif
 
+#ifndef std::move
+template <class T>
+typename remove_reference<T>::type&&
+move(T&& a)
+{
+    return a;
+}
+#endif
 #include <string>
 
 #include <stdint.h>

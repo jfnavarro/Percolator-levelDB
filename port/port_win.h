@@ -35,6 +35,7 @@
 #define close _close
 #if defined (__MINGW__) || defined MINGW || defined __MINGW
   #define fread_unlocked fread
+  
 #else
   #define fread_unlocked _fread_nolock
 #endif
@@ -54,6 +55,13 @@ private:
 } nullptr = {};  
 #endif
 
+#ifndef std::move
+template<class T>
+typename std::remove_reference<T>::type&& move(T&& v)
+{
+    return static_cast<typename std::remove_reference<T>::type&&>(v);
+}
+#endif
 #include <string>
 
 #include <stdint.h>

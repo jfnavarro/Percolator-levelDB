@@ -69,7 +69,7 @@
   {
     return a;
   } 
-#else
+#endif
 
 namespace leveldb {
 namespace {

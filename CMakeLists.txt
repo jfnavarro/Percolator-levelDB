@@ -21,6 +21,16 @@ include_directories(${Boost_INCLUDE_DIRS})
 link_directories(${Boost_INCLUDE_DIRS})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR} include)
 
+
+# STATIC/DYNAMIC LIBRARY INCLUSION
+if(MINGW OR WIN32)
+  OPTION(STATIC "build a static binaries. This is mainly intended for the win32-package and the MACOSX-bundle." ON )
+else(MINGW OR WIN32)
+  OPTION(STATIC "build a static binaries. This is mainly intended for the win32-package and the MACOSX-bundle." OFF )
+endif()
+
+
+
 # OS detection
 if(WIN32)
     find_package(Boost)
@@ -123,6 +133,12 @@ set(_soversion ${LIB_MAJOR}.${LIB_MINOR}.${LIB_RELEASE})
 set_target_properties(leveldb PROPERTIES SOVERSION ${LIB_MAJOR} VERSION ${_soversion})
 target_link_libraries(leveldb pthread ${Boost_LIBRARIES})
 SET (LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
+
+IF(MINGW)
+  set_property(TARGET leveldb PROPERTY LINK_SEARCH_END_STATIC ON)
+  set_target_properties(leveldb PROPERTIES LINK_FLAGS "-static-libgcc")
+ENDIF()
+
 INSTALL(FILES ${HDRS} DESTINATION ${CMAKE_INSTALL_PREFIX}/include/leveldb)
 if(MINGW OR WIN32)
   INSTALL(TARGETS leveldb DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)

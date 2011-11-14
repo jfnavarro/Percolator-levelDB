@@ -26,8 +26,8 @@ SET (BOOST_LIB_PREFIX "lib")
 ##probably not necessary, need to set MINGWLIB accordingly and add the linker directory
 set(MINGWLIB "${MING_PATH}/lib")
 
-set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -static-libgcc")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS_DEBUG} -static-libgcc")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -static-libgcc -std=c++0x")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS_DEBUG} -static-libgcc -std=c++0x")
 
 set(CMAKE_C_COMPILER    ${MINGW_PREFIX}gcc)
 set(CMAKE_CXX_COMPILER  ${MINGW_PREFIX}g++)

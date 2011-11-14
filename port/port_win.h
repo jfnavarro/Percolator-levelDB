@@ -35,6 +35,7 @@
 #define close _close
 #if defined (__MINGW__) || defined MINGW || defined __MINGW
   #define fread_unlocked fread
+#define std::ofstream(A,P) std::ofstream(A.c_str(),P)
 #else
   #define fread_unlocked _fread_nolock
 #endif

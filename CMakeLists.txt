@@ -33,12 +33,9 @@ endif()
 
 # OS detection
 if(WIN32)
-    find_package(Boost)
-    # We use "DIR"(cached) instead of "DIRS" here. for GURU.
-    include_directories(${Boost_INCLUDE_DIR})
     add_definitions(-DLEVELDB_PLATFORM_WINDOWS -DOS_WIN -DWIN32_LEAN_AND_MEAN)
     if(MINGW)
-      add_definitions(-DMINGW)
+	add_definitions(-DMINGW)
     endif()
     if(MSVC)
         add_definitions(-DCOMPILER_MSVC)
@@ -136,7 +133,7 @@ SET (LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 
 IF(MINGW)
   set_property(TARGET leveldb PROPERTY LINK_SEARCH_END_STATIC ON)
-  set_target_properties(leveldb PROPERTIES LINK_FLAGS "-static-libgcc -lstdc++")
+  set_target_properties(leveldb PROPERTIES LINK_FLAGS "-static-libgcc")
 ENDIF()
 
 INSTALL(FILES ${HDRS} DESTINATION ${CMAKE_INSTALL_PREFIX}/include/leveldb)

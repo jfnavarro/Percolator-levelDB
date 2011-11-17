@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/arena_test.dir/util/arena_test.cc.o  -o arena_test -rdynamic lib/libleveldb-testharness.a lib/libleveldb.so.0.0.1 -lpthread -Wl,-rpath,/scratch/newhome/Desktop/okuoku-leveldb-cmake-e28f0b5/lib 

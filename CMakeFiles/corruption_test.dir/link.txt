@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/corruption_test.dir/db/corruption_test.cc.o  -o corruption_test -rdynamic lib/libleveldb-testharness.a lib/libleveldb.so.0.0.1 -lpthread -Wl,-rpath,/scratch/newhome/Desktop/okuoku-leveldb-cmake-e28f0b5/lib 

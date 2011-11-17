@@ -1,2 +1,0 @@
-/usr/bin/ar cr lib/libleveldb-testharness.a  CMakeFiles/leveldb-testharness.dir/util/testutil.cc.o CMakeFiles/leveldb-testharness.dir/util/testharness.cc.o
-/usr/bin/ranlib lib/libleveldb-testharness.a
